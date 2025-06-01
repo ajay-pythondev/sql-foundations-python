@@ -82,12 +82,8 @@ Think of it like writing to a file — always save and close it when you're done
 """
 
 
-import sqlite3
+from db_conn import conn, cursor
 from datetime import datetime
-
-conn = sqlite3.connect("tutorial.db")
-
-cursor = conn.cursor()
 
 cursor.execute(
     """
@@ -126,7 +122,8 @@ cursor.execute("SELECT * FROM users")
 for row in cursor.fetchall():
     print(row)
 
-cursor.execute("""DROP TABLE IF EXISTS users""")
+
+# cursor.execute("""DROP TABLE IF EXISTS users""")
 
 conn.commit()
 
